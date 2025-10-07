@@ -23,7 +23,7 @@ plugins {
 def twaManifest = [
     applicationId: 'io.github.kelmfaker.twa',
     hostName: 'kelmfaker.github.io', // The domain being opened in the TWA.
-    launchUrl: '/', // The start path for the TWA. Must be relative to the domain.
+    launchUrl: '/household-supplies', // The start path for the TWA. Must be relative to the domain.
     name: 'Household Supplies Organizer', // The application name.
     launcherName: 'Supplies', // The name shown on the Android Launcher.
     themeColor: '#000000', // The color used for the status bar.
