@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.kelmfaker.households",
+      "sha256_cert_fingerprints": [
+        "7E:14:06:BB:EE:54:E8:D0:52:5C:5E:26:D8:42:0D:6E:27:3C:F0:94:E1:B0:99:1D:71:08:04:14:6B:C8:FE:14"
+      ]
+    }
+  }
+]
