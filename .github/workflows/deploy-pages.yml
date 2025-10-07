@@ -1,0 +1,52 @@
+name: Export and publish static site to GitHub Pages
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  export-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Build & export
+        run: npm run export
+
+      - name: Add assetlinks.json if provided
+        if: ${{ secrets.ASSETLINKS_JSON != '' }}
+        run: |
+          echo 'Adding assetlinks.json from secret'
+          mkdir -p out/.well-known
+          printf "%s" "${{ secrets.ASSETLINKS_JSON }}" > out/.well-known/assetlinks.json
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./out
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+
+      - name: Trigger TWA AAB build workflow
+        if: ${{ secrets.GITHUB_TOKEN != '' }}
+        env:
+          REPO: ${{ github.repository }}
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "Dispatching build-twa.yml workflow..."
+          curl -X POST -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer $TOKEN" \
+            https://api.github.com/repos/$REPO/actions/workflows/build-twa.yml/dispatches \
+            -d '{"ref":"main"}'

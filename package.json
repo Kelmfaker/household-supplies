@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "build": "next build",
+    "export": "next build && next export",
     "build:twa": "bubblewrap build",
     "generate:screenshots-pdf": "node ./scripts/generate_screenshots_pdf.js",
     "dev": "next dev",
