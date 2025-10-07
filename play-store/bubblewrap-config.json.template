@@ -1,0 +1,13 @@
+{
+  "manifestUrl": "https://your-domain/manifest.json",
+  "applicationId": "com.example.households",
+  "applicationName": "Household Supplies",
+  "launcherName": "Supplies",
+
+  "signing": {
+    "keystorePath": "./my-release-key.jks",
+    "keystorePassword": "CHANGE_ME",
+    "keyAlias": "my_alias",
+    "keyPassword": "CHANGE_ME"
+  }
+}
