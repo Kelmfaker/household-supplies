@@ -22,8 +22,8 @@ plugins {
 
 def twaManifest = [
     applicationId: 'io.github.kelmfaker.twa',
-    hostName: 'household-supplies', // The domain being opened in the TWA.
-    launchUrl: 'bubblewrap init --manifest https://kelmfaker.github.io/household-supplies/manifest.json', // The start path for the TWA. Must be relative to the domain.
+    hostName: 'kelmfaker.github.io', // The domain being opened in the TWA.
+    launchUrl: '/', // The start path for the TWA. Must be relative to the domain.
     name: 'Household Supplies Organizer', // The application name.
     launcherName: 'Supplies', // The name shown on the Android Launcher.
     themeColor: '#000000', // The color used for the status bar.
@@ -207,8 +207,6 @@ repositories {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    
-        implementation 'com.google.androidbrowserhelper:billing:1.1.0'
     
         implementation 'com.google.androidbrowserhelper:androidbrowserhelper:2.6.2'
     

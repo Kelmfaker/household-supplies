@@ -1,6 +1,6 @@
 {
   "packageId": "io.github.kelmfaker.twa",
-  "host": "household-supplies",
+  "host": "kelmfaker.github.io",
   "name": "Household Supplies Organizer",
   "launcherName": "Supplies",
   "display": "standalone",
@@ -12,7 +12,7 @@
   "navigationDividerColorDark": "#000000",
   "backgroundColor": "#FFFFFF",
   "enableNotifications": true,
-  "startUrl": "bubblewrap init --manifest https://kelmfaker.github.io/household-supplies/manifest.json",
+  "startUrl": "/",
   "iconUrl": "https://kelmfaker.github.io/icons/icon-512.png",
   "maskableIconUrl": "https://kelmfaker.github.io/icons/icon-512.png",
   "splashScreenFadeOutDuration": 300,
@@ -26,11 +26,7 @@
   "generatorApp": "bubblewrap-cli",
   "webManifestUrl": "https://kelmfaker.github.io/household-supplies/manifest.json",
   "fallbackType": "customtabs",
-  "features": {
-    "playBilling": {
-      "enabled": true
-    }
-  },
+  "features": {},
   "alphaDependencies": {
     "enabled": false
   },
