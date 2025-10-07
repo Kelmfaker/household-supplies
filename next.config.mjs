@@ -18,6 +18,8 @@ try {
 
 /** @type {import('next').NextConfig} */
 const nextConfig = withPWA({
+  // Build a static export output (replaces `next export` in newer Next.js)
+  output: 'export',
   eslint: {
     ignoreDuringBuilds: true,
   },
