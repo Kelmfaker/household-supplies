@@ -43,3 +43,4 @@ Default categories include:
 - 🌾 Grains & Cereals
 
 You can add custom categories with your own names and emoji icons!
+\n
