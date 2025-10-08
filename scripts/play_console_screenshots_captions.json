@@ -1,0 +1,11 @@
+[
+  {"step":1,"file":"01_overview.png","caption":"Play Console - App overview. Shows app name and dashboard."},
+  {"step":2,"file":"02_api_access.png","caption":"API access - Add or grant service account access for CI uploads."},
+  {"step":3,"file":"03_create_release.png","caption":"Create release - choose Internal testing, then create a new release."},
+  {"step":4,"file":"04_upload_aab.png","caption":"Upload AAB - drag & drop your generated .aab file here."},
+  {"step":5,"file":"05_release_notes.png","caption":"Release notes & validations - add notes and review any validation warnings or errors."},
+  {"step":6,"file":"06_rollout_internal.png","caption":"Start rollout - confirm and start rollout to internal testers."},
+  {"step":7,"file":"07_testers_optin.png","caption":"Testers - add testers or copy the opt-in URL to invite testers."},
+  {"step":8,"file":"08_prelaunch_report.png","caption":"Pre-launch report - monitor automated test results and crashes."},
+  {"step":9,"file":"09_production_rollout.png","caption":"Production rollout - promote release to production when ready."}
+]

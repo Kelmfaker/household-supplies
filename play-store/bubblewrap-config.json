@@ -1,0 +1,14 @@
+{
+  "manifestUrl": "https://kelmfaker.github.io/household-supplies/manifest.json",
+  "applicationId": "com.kelmfaker.households",
+  "applicationName": "Household Supplies Organizer",
+  "launcherName": "Supplies",
+
+  "signing": {
+    "keystorePath": "./play-store/my-release-key.jks",
+    "keystorePassword": "CHANGE_ME",
+    "keyAlias": "my_alias",
+    "keyPassword": "CHANGE_ME"
+  }
+}
+{"jdkPath":"","androidSdkPath":""}

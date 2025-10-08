@@ -1,0 +1,54 @@
+name: Build TWA AAB
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-aab:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install bubblewrap
+        run: npm install -g @bubblewrap/cli
+
+      - name: Restore artifact and install deps
+        run: npm ci
+
+      - name: Prepare keystore
+        env:
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+        run: |
+          if [ -z "$KEYSTORE_BASE64" ]; then echo 'No keystore provided'; exit 1; fi
+          echo "$KEYSTORE_BASE64" | base64 --decode > play-store/my-release-key.jks
+
+      - name: Populate bubblewrap config
+        run: |
+          jq --arg kpath "./play-store/my-release-key.jks" \
+             --arg kpass "${{ secrets.KEYSTORE_PASSWORD }}" \
+             --arg alias "${{ secrets.KEY_ALIAS }}" \
+             --arg keypass "${{ secrets.KEY_PASSWORD }}" \
+             '.signing.keystorePath = $kpath | .signing.keystorePassword = $kpass | .signing.keyAlias = $alias | .signing.keyPassword = $keypass' \
+             play-store/bubblewrap-config.json > play-store/bubblewrap-config.ci.json
+
+      - name: Run bubblewrap init (non-interactive)
+        run: bubblewrap init --config play-store/bubblewrap-config.ci.json || true
+
+      - name: Build AAB
+        run: bubblewrap build --config play-store/bubblewrap-config.ci.json
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: twa-aab
+          path: |
+            android/app/build/outputs/**/*.aab
